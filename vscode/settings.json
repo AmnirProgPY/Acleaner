@@ -1,0 +1,25 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/src/core"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/src/core"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none",
+        "reportMissingImports": "none",
+        "reportMissingTypeStubs": "none"
+    },
+    "python.analysis.exclude": [
+        "**/build",
+        "**/__pycache__", "**/node_modules", "**/.*"
+    ],
+    "files.exclude": {
+        "**/*.pyd": false,
+        "**/*.so": false,
+        "**/*.dll": false
+    }
+}

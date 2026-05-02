@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+CCleaner Clone - Main Window XAML Definition
+This defines the UI layout that can be used with Python XAML frameworks
+-->
+
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="System Cleaner Pro" 
+        Height="650" 
+        Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF1A1A2E">
+    
+    <Window.Resources>
+        <!-- Color definitions -->
+        <SolidColorBrush x:Key="PrimaryColor" Color="#16213E"/>
+        <SolidColorBrush x:Key="SecondaryColor" Color="#0F3460"/>
+        <SolidColorBrush x:Key="AccentColor" Color="#E94560"/>
+        <SolidColorBrush x:Key="TextColor" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="SuccessColor" Color="#00C853"/>
+        <SolidColorBrush x:Key="WarningColor" Color="#FFD600"/>
+        
+        <!-- Style for navigation buttons -->
+        <Style x:Key="NavButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource SecondaryColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="5,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                BorderBrush="{StaticResource AccentColor}"
+                                BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- Style for action button -->
+        <Style x:Key="ActionButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                BorderBrush="{StaticResource AccentColor}"
+                                BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="{StaticResource PrimaryColor}" 
+                Padding="20">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="🧹" FontSize="32" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <StackPanel>
+                    <TextBlock Text="System Cleaner Pro" 
+                              FontSize="28" 
+                              FontWeight="Bold"
+                              Foreground="{StaticResource TextColor}"/>
+                    <TextBlock Text="Professional System Optimization" 
+                              FontSize="14"
+                              Foreground="#AAFFFFFF"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Right" 
+                           Margin="Auto,0,0,0">
+                    <TextBlock Text="System Status: " 
+                              Foreground="{StaticResource TextColor}"
+                              VerticalAlignment="Center"/>
+                    <Ellipse Width="12" 
+                            Height="12" 
+                            Fill="{StaticResource SuccessColor}"
+                            VerticalAlignment="Center"
+                            Margin="5,0"/>
+                    <TextBlock Text="Healthy" 
+                              Foreground="{StaticResource SuccessColor}"
+                              VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Left Navigation Panel -->
+            <Border Grid.Column="0" 
+                    Background="{StaticResource PrimaryColor}"
+                    Padding="10">
+                <StackPanel>
+                    <TextBlock Text="CLEANING TOOLS" 
+                              Foreground="{StaticResource AccentColor}"
+                              FontWeight="Bold"
+                              Margin="5,10,5,15"
+                              FontSize="12"/>
+                    
+                    <Button Style="{StaticResource NavButton}" 
+                            Content="📊 Dashboard"
+                            Tag="dashboard"/>
+                    
+                    <Button Style="{StaticResource NavButton}" 
+                            Content="🧹 System Cleaner"
+                            Tag="cleaner"/>
+                    
+                    <Button Style="{StaticResource NavButton}" 
+                            Content="🌐 Browser Cleaner"
+                            Tag="browser"/>
+                    
+                    <Button Style="{StaticResource NavButton}" 
+                            Content="📝 Registry Cleaner"
+                            Tag="registry"/>
+                    
+                    <Separator Margin="5,15" Background="{StaticResource SecondaryColor}"/>
+                    
+                    <TextBlock Text="ANALYSIS" 
+                              Foreground="{StaticResource AccentColor}"
+                              FontWeight="Bold"
+                              Margin="5,10,5,15"
+                              FontSize="12"/>
+                    
+                    <Button Style="{StaticResource NavButton}" 
+                            Content="💾 Disk Analyzer"
+                            Tag="disk"/>
+                    
+                    <Button Style="{StaticResource NavButton}" 
+                            Content="📁 Duplicate Finder"
+                            Tag="duplicates"/>
+                    
+                    <Separator Margin="5,15" Background="{StaticResource SecondaryColor}"/>
+                    
+                    <TextBlock Text="ADVANCED" 
+                              Foreground="{StaticResource AccentColor}"
+                              FontWeight="Bold"
+                              Margin="5,10,5,15"
+                              FontSize="12"/>
+                    
+                    <Button Style="{StaticResource NavButton}" 
+                            Content="⚙️ Settings"
+                            Tag="settings"/>
+                </StackPanel>
+            </Border>
+            
+            <!-- Right Content Area -->
+            <Border Grid.Column="1" 
+                    Background="#FF16213E"
+                    Padding="30">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Content Title -->
+                    <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                        <TextBlock x:Name="ContentTitle" 
+                                  Text="System Cleaner"
+                                  FontSize="24"
+                                  FontWeight="Bold"
+                                  Foreground="{StaticResource TextColor}"/>
+                        <TextBlock x:Name="ContentDescription"
+                                  Text="Clean junk files and optimize your system"
+                                  FontSize="14"
+                                  Foreground="#AAFFFFFF"
+                                  Margin="0,5,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Scrollable Content Area -->
+                    <ScrollViewer Grid.Row="1" 
+                                 VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <!-- System Cleaner Content -->
+                            <Border x:Name="CleanerContent"
+                                    Background="#FF1A1A2E"
+                                    CornerRadius="10"
+                                    Padding="20"
+                                    Margin="0,0,0,15">
+                                <StackPanel>
+                                    <TextBlock Text="Cleanup Categories"
+                                              FontSize="16"
+                                              FontWeight="Bold"
+                                              Foreground="{StaticResource TextColor}"
+                                              Margin="0,0,0,15"/>
+                                    
+                                    <CheckBox Content="Temporary Files" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"
+                                             IsChecked="True"/>
+                                    
+                                    <CheckBox Content="System Logs" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"
+                                             IsChecked="True"/>
+                                    
+                                    <CheckBox Content="Recycle Bin" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"
+                                             IsChecked="True"/>
+                                    
+                                    <CheckBox Content="Memory Dumps" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"
+                                             IsChecked="True"/>
+                                    
+                                    <CheckBox Content="Windows Error Reports" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Browser Cleaner Content -->
+                            <Border x:Name="BrowserContent"
+                                    Background="#FF1A1A2E"
+                                    CornerRadius="10"
+                                    Padding="20"
+                                    Margin="0,0,0,15"
+                                    Visibility="Collapsed">
+                                <StackPanel>
+                                    <TextBlock Text="Browser Cleanup"
+                                              FontSize="16"
+                                              FontWeight="Bold"
+                                              Foreground="{StaticResource TextColor}"
+                                              Margin="0,0,0,15"/>
+                                    
+                                    <CheckBox Content="Cache Files" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"
+                                             IsChecked="True"/>
+                                    
+                                    <CheckBox Content="Cookies" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"/>
+                                    
+                                    <CheckBox Content="Browsing History" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"/>
+                                    
+                                    <CheckBox Content="Download History" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"/>
+                                    
+                                    <CheckBox Content="Saved Passwords" 
+                                             Foreground="{StaticResource TextColor}"
+                                             Margin="0,5"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Results Display -->
+                            <Border x:Name="ResultsPanel"
+                                    Background="#FF1A1A2E"
+                                    CornerRadius="10"
+                                    Padding="20"
+                                    Visibility="Collapsed">
+                                <StackPanel>
+                                    <TextBlock x:Name="ResultsTitle"
+                                              Text="Scan Results"
+                                              FontSize="16"
+                                              FontWeight="Bold"
+                                              Foreground="{StaticResource TextColor}"
+                                              Margin="0,0,0,15"/>
+                                    
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Text="Files Found:" 
+                                                      Foreground="#AAFFFFFF"/>
+                                            <TextBlock x:Name="FilesFoundText"
+                                                      Text="0"
+                                                      FontSize="24"
+                                                      FontWeight="Bold"
+                                                      Foreground="{StaticResource WarningColor}"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="Space to Free:" 
+                                                      Foreground="#AAFFFFFF"/>
+                                            <TextBlock x:Name="SpaceToFreeText"
+                                                      Text="0 MB"
+                                                      FontSize="24"
+                                                      FontWeight="Bold"
+                                                      Foreground="{StaticResource SuccessColor}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    
+                                    <ListBox x:Name="FilesList"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            Margin="0,15,0,0"
+                                            MaxHeight="200"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                    
+                    <!-- Action Buttons -->
+                    <StackPanel Grid.Row="2" 
+                               Orientation="Horizontal" 
+                               HorizontalAlignment="Center"
+                               Margin="0,20,0,0">
+                        <Button x:Name="AnalyzeButton"
+                                Style="{StaticResource ActionButton}"
+                                Content="🔍 Analyze"
+                                Margin="0,0,20,0"/>
+                        
+                        <Button x:Name="CleanButton"
+                                Style="{StaticResource ActionButton}"
+                                Content="🧹 Clean Now"
+                                Background="{StaticResource SuccessColor}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <!-- Status Bar -->
+        <Border Grid.Row="2" 
+                Background="{StaticResource PrimaryColor}"
+                Padding="15,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock x:Name="StatusText"
+                          Text="Ready to clean..."
+                          Foreground="{StaticResource TextColor}"/>
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="Last cleaned: " 
+                              Foreground="#AAFFFFFF"/>
+                    <TextBlock x:Name="LastCleanedText"
+                              Text="Never"
+                              Foreground="{StaticResource TextColor}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
