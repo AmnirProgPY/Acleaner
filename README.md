@@ -22,7 +22,7 @@ A high-performance system cleaning utility built with Pythonand XAML.
 ```bash
 # Clone repository
 git clone https://github.com/AmnirProgPY/Acleaner.git
-cd ccleaner-clone
+cd Acleaner
 
 # Install Python dependencies
 pip install -r requirements.txt
